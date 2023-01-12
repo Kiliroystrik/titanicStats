@@ -1,0 +1,13 @@
+.cardContainer{
+
+    display: flex;
+    flex-wrap: wrap;
+    height: 75vh;
+    overflow-y: scroll;
+    padding: 0.5rem;
+
+    .passengerCard{
+        margin: 1rem auto;
+        width: 20rem;
+    }
+}

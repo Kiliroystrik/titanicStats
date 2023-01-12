@@ -1,0 +1,23 @@
+.login{
+    height: inherit;
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    mat-card{
+        width: 40rem;
+        height: 20rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        mat-card-content{
+            width: 60%;
+            form{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        
+    }
+}
