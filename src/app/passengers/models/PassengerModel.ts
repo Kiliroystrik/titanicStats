@@ -8,6 +8,7 @@ export class Passenger {
     public Age!: string;
     public SibSp!: string;
     public Parch!: string;
+    public Cabin!: string;
     public Ticket!: string;
     public Fare!: string;
     public Embarked!: string;
