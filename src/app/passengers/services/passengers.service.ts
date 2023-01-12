@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Passenger } from '../passengers/models/PassengerModel';
+import { Passenger } from '../models/PassengerModel';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -35,7 +35,10 @@ export class PassengersService {
     return this.http.get<Passenger[]>(this.apiUrl, { params: params })
   }
 
+
   search(name: string): Observable<Passenger[]> {
     return this.http.get<Passenger[]>(this.apiUrl + 'search/' + name)
   }
+
+
 }

@@ -1,13 +1,52 @@
-<form (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email</label>
-        <input name="email" ngModel minlength="4" required type="email" class="form-control" id="exampleInputEmail1"
-            aria-describedby="emailHelp">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input name="password" ngModel required minlength="4" type="password" class="form-control"
-            id="exampleInputPassword1">
-    </div>
-    <button class="btn btn-primary" type="submit">Login</button>
-</form>
+<div class="login">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Connection</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
+
+                <div *ngIf="email.errors?.['required']">
+                    Email is required.
+                </div>
+                <div *ngIf="email.errors?.['minlength']">
+                    Email must be at least 4 characters long.
+                </div>
+
+            </div>
+
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
+
+                <div *ngIf="password.errors?.['required']">
+                    Password is required.
+                </div>
+                <div *ngIf="password.errors?.['minlength']">
+                    Password must be at least 4 characters long.
+                </div>
+
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+                {{ errorMessage }}
+            </div>
+            <form (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm" class="form">
+                <mat-form-field appearance="fill">
+                    <mat-label for="exampleInputEmail1" class="form-label">Email</mat-label>
+                    <input matInput name="email" ngModel #email="ngModel" minlength="4" required type="email"
+                        class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label for=" exampleInputPassword1" class="form-label">Password</mat-label>
+                    <input matInput name="password" ngModel #password="ngModel" required minlength="4" type="password"
+                        class="form-control" id="exampleInputPassword1">
+                </mat-form-field>
+                <button mat-raised-button [disabled]="formSearch.invalid" class="btn btn-primary"
+                    type="submit">Login</button>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+
+
+
+</div>

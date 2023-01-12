@@ -1,0 +1,28 @@
+<div class="cardContainer">
+
+    <mat-card *ngFor="let passenger of passengers" class="passengerCard">
+        <mat-card-header>
+            <mat-card-title>{{passenger.Name}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <!-- <p>{{passenger.PassengerId}}</p> -->
+            <ng-container *ngIf="passenger.Survived == '1'">
+                <p>Survivant</p>
+            </ng-container>
+            <ng-container *ngIf="passenger.Survived == '0'">
+                <p>Décédé</p>
+            </ng-container>
+
+            <p>Classe du passager : {{passenger.Pclass}}</p>
+            <!-- <p>{{passenger.Name}}</p> -->
+            <p>Age : {{passenger.Age}} ans</p>
+            <p>Sex : {{passenger.Sex}}</p>
+            <!-- <p>{{passenger.SibSp}}</p> -->
+            <p *ngIf="passenger.Cabin">Numéro de cabine : {{passenger.Cabin}}</p>
+            <p>Numéro de ticket : {{passenger.Ticket}}</p>
+            <!-- <p>{{passenger.Fare}}</p> -->
+            <!-- <p>{{passenger.Embarked}}</p> -->
+        </mat-card-content>
+    </mat-card>
+
+</div>

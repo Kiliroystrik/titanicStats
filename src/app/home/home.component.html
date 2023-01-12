@@ -1,14 +1,71 @@
-<div *ngFor="let passenger of passengers">
-    <p>{{passenger.PassengerId}}</p>
-    <p>{{passenger.Survived}}</p>
-    <p>{{passenger.Pclass}}</p>
-    <p>{{passenger.Name}}</p>
-    <p>{{passenger.Age}}</p>
-    <p>{{passenger.Sex}}</p>
-    <p>{{passenger.SibSp}}</p>
-    <p>{{passenger.Parch}}</p>
-    <p>{{passenger.Ticket}}</p>
-    <p>{{passenger.Fare}}</p>
-    <p>{{passenger.Embarked}}</p>
+<div class="home">
+    <form (ngSubmit)="search(formSearch)" class="search" #formSearch="ngForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Search</mat-label>
+            <input matInput placeholder="Search" name="word" ngModel>
+        </mat-form-field>
+        <!-- <button mat-raised-button type="submit">Rechercher</button> -->
+    </form>
 
+    <div class="filter">
+        <div>
+            <mat-checkbox type="checkbox" id="male" [checked]="maleSelected" [(ngModel)]="maleSelected"
+                name="gender">Male</mat-checkbox>
+        </div>
+
+        <div>
+            <mat-checkbox type="checkbox" id="female" [checked]="femaleSelected" [(ngModel)]="femaleSelected"
+                name="gender">Female</mat-checkbox>
+        </div>
+
+        <div>
+            <mat-checkbox type="checkbox" id="survived" [checked]="survived" [(ngModel)]="survived"
+                name="gender">Survivant</mat-checkbox>
+        </div>
+
+        <div>
+            <mat-checkbox type="checkbox" id="dead" [checked]="dead" [(ngModel)]="dead"
+                name="gender">Mort</mat-checkbox>
+        </div>
+
+        <div>
+            <mat-checkbox type="checkbox" id="firstClassChecked" [checked]="firstClassChecked"
+                [(ngModel)]="firstClassChecked" name="firstClassChecked">1ere classe</mat-checkbox>
+        </div>
+
+        <div>
+            <mat-checkbox type="checkbox" id="secondClassChecked" [checked]="secondClassChecked"
+                [(ngModel)]="secondClassChecked" name="secondClassChecked">2eme
+                classe</mat-checkbox>
+        </div>
+
+        <div>
+            <mat-checkbox type="checkbox" id="thirdClassChecked" [checked]="thirdClassChecked"
+                [(ngModel)]="thirdClassChecked" name="thirdClassChecked">3eme classe</mat-checkbox>
+        </div>
+
+    </div>
+    <div style="display: flex; margin-top: 5rem; justify-content: space-around;">
+
+
+        <div style="width: 45%;">
+            <mat-radio-group [(ngModel)]="selectedOption" name="radioGroup"
+                style="display: flex; gap: 1rem;  margin-bottom: 2rem;">
+                <mat-radio-button value="chartByGender" (change)="onRadioCheck($event)" [checked]="true"> Chart par
+                    genre
+                </mat-radio-button>
+                <mat-radio-button value="chartByAge" (change)="onRadioCheck($event)"> Chart par age
+                </mat-radio-button>
+                <mat-radio-button value="chartByClasse" (change)="onRadioCheck($event)"> Chart par
+                    classe
+                </mat-radio-button>
+            </mat-radio-group>
+            <app-passengers-graph [selectedOption]="selectedOption"></app-passengers-graph>
+        </div>
+
+        <app-passengers-list [maleSelected]="maleSelected" [femaleSelected]="femaleSelected" [survived]="survived"
+            [dead]="dead" [firstClassChecked]="firstClassChecked" [secondClassChecked]="secondClassChecked"
+            [thirdClassChecked]="thirdClassChecked"></app-passengers-list>
+
+    </div>
 </div>
