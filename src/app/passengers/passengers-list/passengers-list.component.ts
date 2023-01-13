@@ -1,3 +1,4 @@
+import { Subscription } from 'rxjs';
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Passenger } from '../models/PassengerModel';
@@ -26,7 +27,7 @@ export class PassengersListComponent implements OnInit {
   // Passengers array
   passengers: Passenger[] = [];
 
-  passengerSubscription: any
+  passengerSubscription!: Subscription;
 
   constructor(private passengersDataSharedService: PassengersDataSharedService) {
   }

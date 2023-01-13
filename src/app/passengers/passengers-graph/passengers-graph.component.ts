@@ -1,7 +1,7 @@
 import { Passenger } from './../models/PassengerModel';
 import { Component, Input, OnInit } from '@angular/core';
 import { PassengersDataSharedService } from '../shared/passengers-data.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-passengers-graph',
@@ -28,7 +28,7 @@ export class PassengersGraphComponent implements OnInit {
     ]
   }
 
-  passengerSubscription: any
+  passengerSubscription!: Subscription;
 
   constructor(private passengersDataSharedService: PassengersDataSharedService) { }
 

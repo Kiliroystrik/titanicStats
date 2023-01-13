@@ -2,6 +2,7 @@ import { NgForm } from '@angular/forms';
 import { Passenger } from './../models/PassengerModel';
 import { PassengersDataSharedService } from './../shared/passengers-data.service';
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-passengers-search',
@@ -10,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PassengersSearchComponent implements OnInit {
 
-  passengerSubscription: any;
+  passengerSubscription!: Subscription;
   passengers!: Passenger[];
   searchWord!: string;
   constructor(private passengersDataSharedService: PassengersDataSharedService) { }
