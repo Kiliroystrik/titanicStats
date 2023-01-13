@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'titanicStats';
-  isAuth: boolean = false;
+  isAuth!: boolean;
   authSubscription: any;
 
   constructor(private authService: AuthService) { }

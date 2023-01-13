@@ -1,0 +1,15 @@
+form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    div{
+        input{
+            height: 2rem;
+            width: 10rem;
+            border: none;
+            border-bottom: solid black .1rem;
+            text-align: center;
+        }
+    }
+}

@@ -10,7 +10,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private authUrl = "auth";
+  private authUrl = "auth/";
   private baseUrl = environment.api;
   private apiUrl = encodeURI(this.baseUrl + this.authUrl);
 
@@ -20,7 +20,11 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   auth(email: string, password: string): Observable<User> {
-    return this.http.post<User>(this.apiUrl, { email, password })
+    return this.http.post<User>(this.apiUrl + 'login', { email, password })
+  }
+
+  subscribe(email: string, password: string): Observable<User> {
+    return this.http.post<User>(this.apiUrl + 'subscribe', { email, password })
   }
 
   isAuthenticated(): boolean {

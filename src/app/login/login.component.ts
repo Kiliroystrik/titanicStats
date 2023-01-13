@@ -11,13 +11,15 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   public errorMessage!: string;
+  public successMessage!: any;
+  public subscribe: boolean = false;
 
   constructor(private router: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(form: NgForm): void {
+  onSubmitLogin(form: NgForm): void {
 
     this.auth.auth(form.value.email, form.value.password).subscribe({
       next: (userData) => {
@@ -30,7 +32,38 @@ export class LoginComponent implements OnInit {
 
       }
     })
+  }
 
+  onSubmitSubscribe(form: NgForm): void {
+
+    this.auth.subscribe(form.value.email, form.value.password).subscribe({
+      next: (userData) => {
+        sessionStorage.setItem('user', JSON.stringify(userData.email));
+        this.successMessage = userData
+        setTimeout(() => {
+
+          this.onSubmitLogin(form);
+        }, 2000);
+
+      },
+      error: (e) => {
+        console.log(e.error);
+        this.errorMessage = JSON.stringify(e.error)
+
+      }
+    })
+  }
+
+  switchTemplate() {
+    switch (this.subscribe) {
+      case false:
+        this.subscribe = true
+        break;
+
+      default:
+        this.subscribe = false
+        break;
+    }
   }
 
 

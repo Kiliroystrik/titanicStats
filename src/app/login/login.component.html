@@ -1,10 +1,67 @@
 <div class="login">
-    <mat-card>
+    <mat-card *ngIf="subscribe == false">
         <mat-card-header>
             <mat-card-title>Connection</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" style="color:rgb(255,47,75);">
+
+                <p *ngIf="email.errors?.['required']">
+                    Email is required.
+                </p>
+                <p *ngIf="email.errors?.['minlength']">
+                    Email must be at least 4 characters long.
+                </p>
+                <p *ngIf="email.errors?.['pattern']">
+                    Email is not valid.
+                </p>
+
+            </div>
+
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" style="color:rgb(255,47,75);">
+
+                <p *ngIf="password.errors?.['required']">
+                    Password is required.
+                </p>
+                <p *ngIf="password.errors?.['minlength']">
+                    Password must be at least 4 characters long.
+                </p>
+
+            </div>
+            <p *ngIf="errorMessage" style="color: rgb(255, 47, 75);">
+                {{ errorMessage }}
+            </p>
+            <p *ngIf="successMessage" style="color: rgb(64, 255, 47);">
+                {{ successMessage }}
+            </p>
+            <form (ngSubmit)="onSubmitLogin(formSearch)" #formSearch="ngForm" class="form">
+                <mat-form-field appearance="fill">
+                    <mat-label for="exampleInputEmail1" class="form-label">Email</mat-label>
+                    <input matInput name="email"
+                        pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                        ngModel #email="ngModel" minlength="4" required type="email" class="form-control"
+                        id="exampleInputEmail1" aria-describedby="emailHelp">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label for=" exampleInputPassword1" class="form-label">Password</mat-label>
+                    <input matInput name="password" ngModel #password="ngModel" required minlength="4" type="password"
+                        class="form-control" id="exampleInputPassword1">
+                </mat-form-field>
+                <button mat-raised-button [disabled]="formSearch.invalid" type="submit">Login</button>
+                <p>Vous n'avez pas de compte ?</p>
+                <button (click)="switchTemplate()" mat-raised-button class="mat-primary"
+                    type="submit">S'inscrire</button>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="subscribe == true">
+        <mat-card-header>
+            <mat-card-title>S'inscrire</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" style="color:rgb(255,47,75);">
 
                 <div *ngIf="email.errors?.['required']">
                     Email is required.
@@ -15,38 +72,44 @@
 
             </div>
 
-            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" style="color:rgb(255,47,75);">
 
-                <div *ngIf="password.errors?.['required']">
+                <p *ngIf="password.errors?.['required']">
                     Password is required.
-                </div>
-                <div *ngIf="password.errors?.['minlength']">
+                </p>
+                <p *ngIf="password.errors?.['minlength']">
                     Password must be at least 4 characters long.
-                </div>
+                </p>
+                <p *ngIf="email.errors?.['pattern']">
+                    Email is not valid.
+                </p>
 
             </div>
-            <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+            <p *ngIf="errorMessage" style="color: rgb(255, 47, 75);">
                 {{ errorMessage }}
-            </div>
-            <form (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm" class="form">
+            </p>
+            <p *ngIf="successMessage" style="color: rgb(64, 255, 47);">
+                {{ successMessage }}
+            </p>
+            <form (ngSubmit)="onSubmitSubscribe(formSearch)" #formSearch="ngForm" class="form">
                 <mat-form-field appearance="fill">
                     <mat-label for="exampleInputEmail1" class="form-label">Email</mat-label>
-                    <input matInput name="email" ngModel #email="ngModel" minlength="4" required type="email"
-                        class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input matInput name="email"
+                        pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                        ngModel #email="ngModel" minlength="4" required type="email" class="form-control"
+                        id="exampleInputEmail1" aria-describedby="emailHelp">
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label for=" exampleInputPassword1" class="form-label">Password</mat-label>
                     <input matInput name="password" ngModel #password="ngModel" required minlength="4" type="password"
                         class="form-control" id="exampleInputPassword1">
                 </mat-form-field>
-                <button mat-raised-button [disabled]="formSearch.invalid" class="btn btn-primary"
-                    type="submit">Login</button>
+                <button mat-raised-button [disabled]="formSearch.invalid" type="submit">S'inscrire</button>
+                <p>Vous avez déjà un compte ?</p>
+                <button (click)="switchTemplate()" mat-raised-button class="mat-primary" type="submit">Se
+                    connecter</button>
 
             </form>
         </mat-card-content>
     </mat-card>
-
-
-
-
 </div>
