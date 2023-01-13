@@ -6,12 +6,13 @@ html{
     background-attachment: fixed;
     background-size: cover;
     app-root{
-        display: flex;
-        flex-direction: column;
+        // display: flex;
+        // flex-direction: column;
         app-menu{
-            min-height: 3vh;
+            height: 3rem;
             display: flex;
-            justify-content: flex-end;
+            justify-content:space-between;
+            align-items: center;
             background-color: rgb(2, 0, 0);
         }
         app-login{
