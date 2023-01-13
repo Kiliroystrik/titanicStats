@@ -1,11 +1,12 @@
 <div class="home">
-    <form (ngSubmit)="search(formSearch)" class="search" #formSearch="ngForm">
+    <!-- <form (ngSubmit)="search(formSearch)" class="search" #formSearch="ngForm">
         <mat-form-field appearance="fill">
             <mat-label>Search</mat-label>
             <input matInput placeholder="Search" name="word" ngModel>
         </mat-form-field>
-        <!-- <button mat-raised-button type="submit">Rechercher</button> -->
-    </form>
+    </form> -->
+
+    <app-passengers-search></app-passengers-search>
 
     <div class="filter">
         <div>
@@ -58,6 +59,9 @@
                 </mat-radio-button>
                 <mat-radio-button value="chartByClasse" (change)="onRadioCheck($event)"> Chart par
                     classe
+                </mat-radio-button>
+                <mat-radio-button value="chartByAverageAge" (change)="onRadioCheck($event)"> Chart par
+                    Moyenne d'âge
                 </mat-radio-button>
             </mat-radio-group>
             <app-passengers-graph [selectedOption]="selectedOption"></app-passengers-graph>

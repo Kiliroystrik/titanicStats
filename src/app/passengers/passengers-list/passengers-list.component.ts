@@ -48,30 +48,10 @@ export class PassengersListComponent implements OnInit {
   }
 
 
-  /**
-   * 
-   * @param form 
-   */
-  // search(form: NgForm) {
-  //   if (form.value['word'] === "") {
-  //     this.getPassengers()
-  //   } else {
-  //     this.passengersService.search(form.value['word']).subscribe({
-  //       next: (passengers) => {
-  //         this.passengers = passengers;
-  //         this.PassengersSent.emit(passengers)
-  //       },
-  //       error: (e) => {
-  //         console.error(e.message);
-  //       }
-  //     })
 
-  //   }
-  // }
 
 
   onCheck() {
-    console.log(this.maleSelected);
 
     this.passengersDataSharedService.updatePassengers(this.maleSelected, this.femaleSelected, this.survived, this.dead, this.firstClassChecked, this.secondClassChecked, this.thirdClassChecked)
     // this.passengers = this.passengersDataSharedService.passengers

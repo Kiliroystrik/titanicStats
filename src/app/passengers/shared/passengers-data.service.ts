@@ -76,6 +76,17 @@ export class PassengersDataSharedService {
 
     }
 
+    updateWithSearch(word: string) {
+        this.passengersService.search(word).subscribe({
+            next: (passengers) => {
+                this.passengers = passengers;
+                this._passengerObservable.next(passengers);
+            },
+            error: (e) => {
+                console.error(e);
+            }
+        })
+    }
 
 
 }

@@ -1,2 +1,2 @@
-<app-menu></app-menu>
+<app-menu *ngIf="isAuth" [title]="title"></app-menu>
 <router-outlet></router-outlet>

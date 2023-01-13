@@ -1,9 +1,7 @@
-import { NgForm } from '@angular/forms';
 import { Passenger } from '../passengers/models/PassengerModel';
-import { PassengersService } from './../services/passengers.service';
 import { Component, OnInit } from '@angular/core';
 import { PassengersDataSharedService } from '../passengers/shared/passengers-data.service';
-import { Observable, of } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -29,8 +27,6 @@ export class HomeComponent implements OnInit {
   passengers: Passenger[] = [];
 
   passengerSubscription: any
-
-  age!: string;
 
   constructor(private passengersDataSharedService: PassengersDataSharedService) {
   }

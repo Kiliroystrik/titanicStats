@@ -17,8 +17,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NgChartsModule } from 'ng2-charts';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
-import { PassengersListComponent } from './passengers/passengers-list/passengers-list.component';
-import { PassengersGraphComponent } from './passengers/passengers-graph/passengers-graph.component';
+import { PassengersModule } from './passengers/passengers.module';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 
@@ -29,8 +29,6 @@ import { PassengersGraphComponent } from './passengers/passengers-graph/passenge
     LoginComponent,
     HomeComponent,
     MenuComponent,
-    PassengersListComponent,
-    PassengersGraphComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +43,9 @@ import { PassengersGraphComponent } from './passengers/passengers-graph/passenge
     MatDialogModule,
     NgChartsModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    PassengersModule,
+    MatChipsModule
   ],
   providers: [GuardService],
   bootstrap: [AppComponent]
